@@ -20,14 +20,14 @@ jobs:
 
 
 
-      - name: Install Chromium
+      - name: Install Chrome
         run: |
             sudo apt-get update
-            sudo apt-get install -y chromium
+            sudo apt-get install -y chromium-browser
 
       - name: Build and test
         env:
           CHROME_OPTS: "--headless --no-sandbox --disable-dev-shm-usage"
         run: |
           echo "Kör alla tester, selenium och unittester..."
-          mvn -B clean test -Dwebdriver.chrome.driver=/usr/bin/chromedriver
+          mvn -B clean test
