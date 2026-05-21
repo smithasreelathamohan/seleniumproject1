@@ -1,18 +1,15 @@
 package com.example.demo;
 
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 import java.time.Duration;
-import org.junit.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FirstTest {
   private WebDriver driver;
@@ -29,7 +26,15 @@ public class FirstTest {
 
   @Test
   public void testFirst() throws Exception {
-    driver.get("https://www.google.com/");
+    driver.get(baseUrl);
+    try {
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+      WebElement acceptBtn = wait.until(
+          ExpectedConditions.elementToBeClickable(
+              By.xpath("//*[text()='Accept all' or text()='Godkänn alla']")));
+      acceptBtn.click();
+    } catch (Exception e) {
+    }
     driver.findElement(By.xpath("//textarea[@name='q']")).click();
     driver.findElement(By.xpath("//textarea[@name='q']")).clear();
     driver.findElement(By.xpath("//textarea[@name='q']")).sendKeys("testing on Katalon in FF");
