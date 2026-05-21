@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,7 +20,9 @@ public class FirstTest {
 
   @BeforeEach
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
+    FirefoxOptions options = new FirefoxOptions();
+    options.addArguments("--headless");
+    driver = new FirefoxDriver(options);
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
   }

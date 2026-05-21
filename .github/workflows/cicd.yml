@@ -11,7 +11,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -19,13 +18,19 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install browsers
+
+
+      - name: Install Chrome
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser
+
+      - name: Install Firefox
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium firefox
-          chromium --version
-          firefox--version
-
+          sudo apt-get install -y firefox
+          firefox --version
+          
       - name: Build and test
         run: |
           echo "Kör alla tester, selenium och unittester..."
