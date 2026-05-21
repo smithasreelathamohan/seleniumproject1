@@ -19,11 +19,12 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install Chromium
+      - name: Install browsers
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium
+          sudo apt-get install -y chromium firefox
           chromium --version
+          firefox--version
 
       - name: Build and test
         run: |
