@@ -11,6 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -18,16 +19,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-
-
-      - name: Install Chrome
+      - name: Install Chromium
         run: |
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser
+          sudo apt-get update
+          sudo apt-get install -y chromium
+          chromium --version
 
       - name: Build and test
-        env:
-          CHROME_OPTS: "--headless --no-sandbox --disable-dev-shm-usage"
         run: |
           echo "Kör alla tester, selenium och unittester..."
           mvn -B clean test
