@@ -20,9 +20,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SystemMentorSeleniumTEst {
+public class SystemMentorSeleniumTest {
 
-    Logger logger = Logger.getLogger(SystemMentorSeleniumTEst.class.getName());
+    Logger logger = Logger.getLogger(SystemMentorSeleniumTest.class.getName());
     static WebDriver driver;
 
     @BeforeAll

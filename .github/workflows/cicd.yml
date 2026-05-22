@@ -31,3 +31,6 @@ jobs:
         run: |
           echo "Kör alla tester, selenium och unittester..."
           mvn -B clean test
+
+      - name: List tests being executed
+        run: mvn -Dtest=* test
